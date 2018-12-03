@@ -47,3 +47,31 @@ Note
 
 Example
 If you don't enable advanced security features, 5k users are joining you every month, and you're refreshing the token every week then it'll cost $28 on 3rd month, $138 on 4th month, $248 on 4th month and so on. 
+
+## [API Gateway](https://aws.amazon.com/api-gateway)
+API Gateway is the front door for applications to access data, business logic, or functionality from your backend services. It can be used for traffic management, authorization and access control, monitoring, and API version management.
+
+### Price
+
+| Number of Requests (per month) | 	Price (per million) |
+|-----------|---------------|
+| First 333 million |	$3.50 |
+| Next 667 million |	$2.80 |
+
+### Price for cahcing
+
+| Cache Memory Size (GB) |	Price per Hour |
+| --------------- | ----------- |
+| 0.5 | 	$0.020 |
+| 1.6 | 	$0.038 |
+| 6.1 | 	$0.20 |
+
+
+Note
+* Every API may respond with some data that will be charged according to EC2 instance.
+
+Example:
+5 million calls sending 3kb data in each call where data transfer charges are $0.09/GB. (no caching)
+```
+( 5 million * $3.50/million ) x ( 3 KB * 5 million * $0.09) = $18.79
+```
