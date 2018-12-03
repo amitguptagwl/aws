@@ -75,3 +75,7 @@ Example:
 ```
 ( 5 million * $3.50/million ) x ( 3 KB * 5 million * $0.09) = $18.79
 ```
+
+## [AWS Virtual Private Cloud (VPC)](https://aws.amazon.com/vpc/)
+ Provision a logically isolated section of the Amazon Web Services (AWS) Cloud where you can launch AWS resources in a virtual network that you define. You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways. You can use both IPv4 and IPv6 in your VPC for secure and easy access to resources and applications. A VPC can be connected to Internet, to a data center, or other VPCs.
+ 
