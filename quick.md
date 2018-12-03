@@ -19,3 +19,31 @@ Communicate your customers using Email, SMS, Push Notifications, and Voice. And 
 
 #### Events
 $0 for the first 100,000,000 events that you collect each month, and $0.000001 per event you collect after that.
+
+## [AWS Certificate Manager(ACM)](https://aws.amazon.com/certificate-manager/)
+To manage and deploy SSL/TLS certificates. It automatically handles renewal.
+
+**Note**
+* You cannot download a SSL certificate from ACM. And c.an use them on specific AWS services
+*
+
+## [Amazon Cognito](https://aws.amazon.com/cognito/)
+For Sign-Up, Sign-In, and Access Control. You can let user to signin through username & password, federated identites (social identity providers like Google, FB, twitter etc), and through enterprise identity providers.
+
+### Direct or social signin
+
+|Pricing Tier (MAUs)|Price per MAU|
+|-----------------|-----------------|
+|First 50,000 |	Free|
+|Next 50,000 |	$0.00550|
+|Next 900,000 |	$0.00460|
+|Next 9,000,000 |	$0.00325|
+|Greater than 10,000,000 |	$0.00250|
+
+Note
+* You can't export user's account information to move out from AWS.
+* Monthly Active Users (MAUs): A user is counted as a MAU if, within a calendar month, there is an identity operation related to that user, such as sign-up, sign-in, token refresh or password change. You are not charged for subsequent sessions or for inactive users within that calendar month.
+* Enabling advanced security features cost more.
+
+Example
+If you don't enable advanced security features, 5k users are joining you every month, and you're refreshing the token every week then it'll cost $28 on 3rd month, $138 on 4th month, $248 on 4th month and so on. 
