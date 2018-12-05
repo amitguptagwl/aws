@@ -20,12 +20,7 @@ Communicate your customers using Email, SMS, Push Notifications, and Voice. And 
 #### Events
 $0 for the first 100,000,000 events that you collect each month, and $0.000001 per event you collect after that.
 
-## [AWS Certificate Manager(ACM)](https://aws.amazon.com/certificate-manager/)
-To manage and deploy SSL/TLS certificates. It automatically handles renewal.
 
-**Note**
-* You cannot download a SSL certificate from ACM. And c.an use them on specific AWS services
-*
 
 ## [Amazon Cognito](https://aws.amazon.com/cognito/)
 For Sign-Up, Sign-In, and Access Control. You can let user to signin through username & password, federated identites (social identity providers like Google, FB, twitter etc), and through enterprise identity providers.
@@ -79,3 +74,7 @@ Example:
 ## [AWS Virtual Private Cloud (VPC)](https://aws.amazon.com/vpc/)
  Provision a logically isolated section of the Amazon Web Services (AWS) Cloud where you can launch AWS resources in a virtual network that you define. You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways. You can use both IPv4 and IPv6 in your VPC for secure and easy access to resources and applications. A VPC can be connected to Internet, to a data center, or other VPCs.
  
+User is not charged to setup VPC but for private links.
+
+## [CloudFront]()
+Consider it as CDN. The static contents are served from the edge location at the lowest latency. CloudFront retrieves the content from the S3 bucket. 
