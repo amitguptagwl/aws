@@ -79,6 +79,26 @@ User is not charged to setup VPC but for private links.
 ## [CloudFront]()
 Consider it as CDN. The static contents are served from the edge location at the lowest latency. CloudFront retrieves the content from the S3 bucket. 
 
+
+Free: 50 GB of data transfer out and 2,000,000 HTTP or HTTPS Requests each month for one year
+
+There are 5 factors affect the price
+
+* **Data Transfer Out (Internet/Origin)**
+ * Out to Internet (per GB): For first 10TB $0.085 for all the regions in United States & Canada and $0.170 for India.
+ * Out to Origin (per GB): For all data transfer $0.02 for all the regions in United States & Canada and $0.160 for India.
+
+* **HTTP/HTTPS Requests**
+ * HTTP: $0.0075 for United States & Canada and $0.0090 for India.
+ * HTTPs: $0.01 for United States & Canada and $0.012 for India.
+* [**Invalidation Requests**](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html): Static files are cached by CloudFront edges. When the file is updated, their cache is needed to be invalidated. First 1,000 paths requests for invalidation are free each month. Thereafter, $0.005 per path request. A path can have wildcard to invalidate all or multiple file requests. (:bulb: Though 1000 free requests are sufficient. But this cost can be saved by versioning the files)
+* **Field Level Encryption Requests**: Encrypting particular field(s) in a post request. So they're not accidently logged as plaint text on the server logs. $0.02 for every 10,000 requests.
+* **Dedicated IP Custom SSL certificates associated with a CloudFront distribution**: 
+* Date transfer in POST/PUT requests will be charged
+* **Lambda@Edge**: Check the relevant section for more detail.
+
+Classes can help to reduce the cost.
+
 ## [S3](https://aws.amazon.com/s3)
 To store the static files. User can request to replicate the data in cross regions.
 
@@ -99,9 +119,6 @@ To store the static files. User can request to replicate the data in cross regio
 * User will also be charged for storage management and data transfer (out) to other AWS services, regions, or to Internet.
 * Data transfer out is free upto 1GB/month to Internet, and all to CloudFront.
 * User will be charged extra if we want to speed up data upload.
-
-
-
 
 
 #### Class
@@ -128,6 +145,18 @@ A class can be applied on a folder, file, or whole bucket. You can also specify 
 † Because S3 One Zone-IA stores data in a single AWS Availability Zone, data stored in this storage class will be lost in the event of Availability Zone destruction.
 * S3 Intelligent-Tiering charges a small tiering fee and has a minimum eligible object size of 128KB for auto-tiering. Smaller objects may be stored but will always be charged at the Frequent Access tier rates. 
 
+Change CloudFront pricing to know how the pricing for accessing static contents can be affected.
 
+## [Lambda@Edge](https://aws.amazon.com/lambda/edge/)
+Run code closer to users.
 
+Use cases
+* Add security headers
+* Reject requests when mandatory headers are missing.
+* Redirect a user to waiting queue if he is not premium
+* Inject particular headers based on the user type. So the application need not to check user's type and work
+* Monitoring & Analytics
+
+### Pricing
+Not clearly mentioned. But, I believe user would be charged same Lambda.
 
