@@ -158,5 +158,14 @@ Use cases
 * Monitoring & Analytics
 
 ### Pricing
-Not clearly mentioned. But, I believe user would be charged same Lambda.
+* Monthly compute charges: $0.00000625125 per 128MB-second
+* Monthly request charges: $0.60 per 1 million requests
+
+If your Lambda@Edge function executed 10 million times in one month, and it ran for 50ms each time;
+```
+Total compute (seconds) = 10M * (0.05sec) = 500,000 seconds
+Monthly compute charges = 500,000 * $0.00000625125 = $3.13
+Monthly request charges = 10M * $0.6/M = $6.00
+Total charges = Compute charges + Request charges = $3.13 + $6.00 = $9.13 per month
+```
 
