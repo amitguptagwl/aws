@@ -78,3 +78,39 @@ User is not charged to setup VPC but for private links.
 
 ## [CloudFront]()
 Consider it as CDN. The static contents are served from the edge location at the lowest latency. CloudFront retrieves the content from the S3 bucket. 
+
+## [S3](https://aws.amazon.com/s3)
+To store the static files.
+
+### Price
+5 GB free in first 12 months. Different charges after that,
+
+| S3 Standard Storage | $0.023/GB up to 50TB |
+| S3 Standard-Infrequent Access (S3 Standard-IA) Storage | $0.0125/GB for all storage |
+| S3 One Zone-Infrequent Access (S3 Standard-IA) Storage | $0.01/GB for all storage |
+
+#### Class
+A class can be applied on a folder, file, or whole bucket. You can also specify rules to apply particular class automatically.
+
+* **Infrequent Access Storage**: accessed infrequently but still needs an immediate access.
+* **Glacier**: For archieve.
+* **Intelligent-Tiering**: a storage object is monitored for 30 days and automatically move to appropriate class as per the access pattern. No extra fees when it moves to particular tier.
+
+|S3 Standard |S3 Intelligent-Tiering*|S3 Standard-IA|S3 One Zone-IA†|S3 Glacier|S3 GlacierDeep Archive**|
+|Designed for durability|99.999999999% (11 9’s) |99.999999999% (11 9’s) |99.999999999% (11 9’s) |99.999999999% (11 9’s) |99.999999999% (11 9’s) |99.999999999% (11 9’s)
+|Designed for availability |99.99% |99.9% |99.9% |99.5% |N/A |N/A|
+|Availability SLA |99.9% |99% |99% |99% |N/A |N/A|
+|Availability Zones |≥3 |≥3 |≥3 |1 |≥3 |≥3|
+|Minimum capacity charge per object |N/A |N/A |128KB |128KB |40KB |40KB|
+|Minimum storage duration charge |N/A |30 days |30 days |30 days |90 days |180 days|
+|Retrieval fee |N/A |N/A |per GB retrieved |per GB retrieved |per GB retrieved |per GB retrieved|
+|First byte latency |milliseconds |millseconds |milliseconds |milliseconds |select minutes or hours |select hours|
+|Storage type |Object |Object |Object |Object |Object |Object|
+|Lifecycle transitions |Yes |Yes |Yes |Yes |Yes |Yes|
+
+† Because S3 One Zone-IA stores data in a single AWS Availability Zone, data stored in this storage class will be lost in the event of Availability Zone destruction.
+
+
+
+
+
