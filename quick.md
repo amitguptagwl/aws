@@ -80,14 +80,29 @@ User is not charged to setup VPC but for private links.
 Consider it as CDN. The static contents are served from the edge location at the lowest latency. CloudFront retrieves the content from the S3 bucket. 
 
 ## [S3](https://aws.amazon.com/s3)
-To store the static files.
+To store the static files. User can request to replicate the data in cross regions.
 
 ### Price
-5 GB free in first 12 months. Different charges after that,
+5 GB free in first 12 months. Different charges after that on monthly basis,
 
+| Class | Price |
+| ---- | ------|
 | S3 Standard Storage | $0.023/GB up to 50TB |
+| S3 Intelligent-Tiering Storage, Frequent Access Tier| $0.023/GB up to 50TB|
+| S3 Intelligent-Tiering Storage, Infrequent Access Tier| $0.0125/GB up to 50TB|
 | S3 Standard-Infrequent Access (S3 Standard-IA) Storage | $0.0125/GB for all storage |
 | S3 One Zone-Infrequent Access (S3 Standard-IA) Storage | $0.01/GB for all storage |
+| Monitoring and Automation | $0.0025 per 1,000 objects  for all storage  | 
+
+**Note** 
+* User needs to pay extra when he performs any opration on data like retieves, scan, or copy paste from/to/in S3 bucket. The charges are different for each class. Operations charges increases when you go from top to bottom in above table.
+* User will also be charged for storage management and data transfer (out) to other AWS services, regions, or to Internet.
+* Data transfer out is free upto 1GB/month to Internet, and all to CloudFront.
+* User will be charged extra if we want to speed up data upload.
+
+
+
+
 
 #### Class
 A class can be applied on a folder, file, or whole bucket. You can also specify rules to apply particular class automatically.
@@ -96,7 +111,9 @@ A class can be applied on a folder, file, or whole bucket. You can also specify 
 * **Glacier**: For archieve.
 * **Intelligent-Tiering**: a storage object is monitored for 30 days and automatically move to appropriate class as per the access pattern. No extra fees when it moves to particular tier.
 
+
 |S3 Standard |S3 Intelligent-Tiering*|S3 Standard-IA|S3 One Zone-IA†|S3 Glacier|S3 GlacierDeep Archive**|
+|-----|-----|-----|-----|-----|-----|
 |Designed for durability|99.999999999% (11 9’s) |99.999999999% (11 9’s) |99.999999999% (11 9’s) |99.999999999% (11 9’s) |99.999999999% (11 9’s) |99.999999999% (11 9’s)
 |Designed for availability |99.99% |99.9% |99.9% |99.5% |N/A |N/A|
 |Availability SLA |99.9% |99% |99% |99% |N/A |N/A|
@@ -109,7 +126,7 @@ A class can be applied on a folder, file, or whole bucket. You can also specify 
 |Lifecycle transitions |Yes |Yes |Yes |Yes |Yes |Yes|
 
 † Because S3 One Zone-IA stores data in a single AWS Availability Zone, data stored in this storage class will be lost in the event of Availability Zone destruction.
-
+* S3 Intelligent-Tiering charges a small tiering fee and has a minimum eligible object size of 128KB for auto-tiering. Smaller objects may be stored but will always be charged at the Frequent Access tier rates. 
 
 
 
